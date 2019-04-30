@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "utility/header.html" with active_tab=4 %}
+{% load crispy_forms_tags %}
+<body>
+<form method="post" class="text-left border border-light p-5">
+  {% csrf_token %}
+  {% for field in form %}
+      <div class="fieldWrapper">
+          {{ field|as_crispy_field }}
+          {{ field.errors|as_crispy_errors }}
+      </div>
+  {% endfor %}
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+</form>
+<a class="badge badge-light" href="/accounts/signup/">Don't have an account? Register</a>
+{% include "utility/includes.html" %}
+</body>
+{% include "utility/footer.html" %}
+</html>

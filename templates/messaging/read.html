@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "utility/header.html" with active_tab=2 %}
+<body>
+<p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapse">
+        Filters
+    </button>
+</p>
+<div class="collapse" id="collapse">
+    <div class="card card-body">
+        <label>Search By:</label>
+        <select class="browser-default custom-select" id="search-by">
+            <option value="visit__username">By User</option>
+            <option value="message_text">By Content</option>
+        </select>
+        <label>Order By:</label>
+        <select class="browser-default custom-select" id="order-by">
+            <option value="time">By Date</option>
+            <option value="visit__username">By User</option>
+            <option value="-time">By Date Descending</option>
+            <option value="-visit__username">By User Descending</option>
+        </select>
+        <label>Per Page:</label>
+        <select class="browser-default custom-select" id="per-page">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+        </select>
+        <button class="btn btn-light" id="apply-filters">Apply</button>
+    </div>
+</div>
+<form class="form-inline border border-light p-2 active-blue">
+    <i class="fas fa-search" aria-hidden="false"></i>
+    <input class="form-control form-control-sm ml-3 w-75" id="search" type="text" placeholder="Search" aria-label="Search">
+</form>
+<br>
+<ul class="list-group" id="list-posts"></ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="page-link" id="previous">Previous</button>
+        <li class="list-group-item"><label>Page:</label>
+            <input id="page-input" class="page-input" value="1"/></li>
+        <button class="page-link" id="next">Next</button>
+</nav>
+{% include "utility/includes.html" %}
+{% load static %}
+<script type="application/javascript" src="{% static 'read/read.js' %}"></script>
+<link rel="stylesheet" href="{% static 'read/read.css' %}">
+</body>
+{% include "utility/footer.html" %}
+</html>

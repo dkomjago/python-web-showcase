@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "utility/header.html" with active_tab=1 %}
+<body>
+<ul class="list-group">
+    <li class="list-group-item">Visits: {{num_visits}}</li>
+    <li class="list-group-item">Posts: {{num_messages }}</li>
+    <li class="list-group-item">Visits today: {{ num_daily_visits }}</li>
+    <li class="list-group-item">Recent activity: {{ recent_users }}</li>
+</ul>
+{% include "utility/includes.html" %}
+</body>
+{% include "utility/footer.html" %}
+</html>

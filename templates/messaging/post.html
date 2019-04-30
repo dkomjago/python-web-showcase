@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "utility/header.html" with active_tab=3 %}
+<body>
+{% if messages %}
+    {% for message in messages %}
+        <div{% if message.tags %} class="alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
+    {% endfor %}
+{% endif %}
+<form action="/post" method="post" id="text-form" class="text-left border border-light p-5">
+    <div class="form-group">
+        <label>Leave your message: </label>
+        {% csrf_token %}
+        <textarea name='message' maxlength='200' class="form-control" id="message" rows="3" placeholder="Write here"></textarea>
+        <span id="chars">200</span> characters remaining
+    </div>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
+</form>
+<br>
+{% include "utility/includes.html" %}
+{% load static %}
+<script type="application/javascript" src="{% static 'post/post.js' %}"></script>
+</body>
+{% include "utility/footer.html" %}
+</html>

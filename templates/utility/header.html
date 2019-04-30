@@ -1,0 +1,19 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    {% load static %}
+    <script type="application/javascript" src="{% static 'header/session_refresh.js' %}"></script>
+</head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand">Showcase</a>
+    <a class="nav-item nav-link {% if active_tab == 1 %}disabled{% endif %}" href="/">Home</a>
+    <a class="nav-item nav-link {% if active_tab == 2 %}disabled{% endif %}" href="/read">Read</a>
+    <a class="nav-item nav-link {% if active_tab == 3 %}disabled{% endif %}" href="/post">Post</a>
+    {% if user.is_authenticated %}
+        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a class="nav-item nav-link {% if active_tab == 4 %}disabled{% endif %}" href="{% url 'login' %}">Login</a>
+    {% endif %}
+</nav>
