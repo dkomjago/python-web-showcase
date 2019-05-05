@@ -4,6 +4,7 @@ import datetime
 from django.utils import timezone
 
 
+# User visit model
 class Visit(models.Model):
     username = models.TextField('user', default='anonymous', null=False, blank=False)
     visit_start = models.DateTimeField('start', default=timezone.now)
@@ -21,6 +22,7 @@ class Visit(models.Model):
     visited_recently.short_description = 'Visited recently?'
 
 
+# Posts made by users model
 class Message(models.Model):
     visit = models.ForeignKey(Visit, on_delete=models.DO_NOTHING,)
     time = models.DateTimeField(auto_now_add=True, null=True)

@@ -21,7 +21,10 @@ $(document).ready(function() {
     });
 });
 
+
 $(document).ready( function(){
+
+    // Bind functions to component actions
     $('#search').keyup(function(){
         $('#page-input').val(1);
         search();
@@ -29,6 +32,11 @@ $(document).ready( function(){
     $('#page-input').keyup(function(){
         if(this.value!=='')search();
     });
+    $("#previous").click(function() {changePage(-1)});
+    $("#next").click(function() {changePage(1)});
+    $("#apply-filters").click(function() {search()});
+
+    // Function for search component -> get query data from input fields and post it
     function search(){
         const query = $('#search').val();
         const queryBy = $('#search-by').val();
@@ -73,14 +81,15 @@ $(document).ready( function(){
             },
         });
     }
+
+    // Function for page input component -> change list output according to presented input
     function changePage(value){
         $("#page-input").val(parseInt($("#page-input").val())+value);
         if($("#page-input").val()<1 || isNaN($("#page-input").val()))
             $("#page-input").val(1);
         search();
     }
-    $("#previous").click(function() {changePage(-1)});
-    $("#next").click(function() {changePage(1)});
-    $("#apply-filters").click(function() {search()});
+
+    // Call search to display results on page load
     search();
 });
