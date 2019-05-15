@@ -1,5 +1,5 @@
 # python-web-showcase
-Python Django web application, db => Postgresql, frontend => jQuery
+Aplikacja webowa zrobiona w Python Django z bazą danych Postgresql, frontend wykonany za pomocą jQuery
 
-deployed:
+zdeployowana na heroku:
 https://python-web-showcase.herokuapp.com/
